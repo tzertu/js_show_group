@@ -1,11 +1,10 @@
 <?php
     /**
-     * @copyright (C) 2013 iJoomla, Inc. - All rights reserved.
+     * @copyright (C) 2015 Rodolfo Ungheri - All rights reserved.
      * @license GNU General Public License, version 2 (http://www.gnu.org/licenses/gpl-2.0.html)
-     * @author iJoomla.com <webmaster@ijoomla.com>
-     * @url https://www.jomsocial.com/license-agreement
-     * The PHP code portions are distributed under the GPL license. If not otherwise stated, all images, manuals, cascading style sheets, and included JavaScript *are NOT GPL, and are released under the IJOOMLA Proprietary Use License v1.0
-     * More info at https://www.jomsocial.com/license-agreement
+     * @author Rodolfo Ungheri <r.ungheri@katamail.com>
+     * @url http://devel.tzertu.net
+     * The PHP code portions are distributed under the GPL license.
      */
     defined('_JEXEC') or die('Restricted access');
 
@@ -15,25 +14,19 @@
     //add style css
     JFactory::getLanguage()->isRTL() ? CTemplate::addStylesheet('style.rtl') : CTemplate::addStylesheet('style');
 
-    $model = CFactory::getModel('groups');
+    $groupModel = CFactory::getModel('groups');
+    $wallModel     = CFactory::getModel('wall');
+    $userModel     = CFactory::getModel('user');
+    $discussModel  = CFactory::getModel('discussions');
+    $bulletinModel = CFactory::getModel('bulletins');
+    $photosModel   = CFactory::getModel('photos');
+    $activityModel = CFactory::getModel('activities');
+    $fileModel     = CFactory::getModel('files');
     //$view = CFactory::getView('groups','html');
     $groupid = $params->get('groupid');
 
-    $group = $model->getGroup($groupid);
-    $groupDiscussion = CommunityModelGroups::getGroupLatestDiscussion($groupid);
-    
-    /*
-    $groups = array();
-
-    $data = array();
-
-    foreach ($tmpGroups as $row) {
-        $group = JTable::getInstance('Group', 'CTable');
-        $group->bind($row);
-        $group->description = JHTML::_('string.truncate', $group->description, 30);
-        $groups[] = $group;
-    }
-  //$cover_url=$model->getCover();
-   */
+    $group = $groupModel->getGroup($groupid);
+    $groupDiscussion = $groupModel->getGroupLatestDiscussion($groupid);
+ 
     
     require(JModuleHelper::getLayoutPath('mod_community_showgroup', $params->get('layout', 'default')));
