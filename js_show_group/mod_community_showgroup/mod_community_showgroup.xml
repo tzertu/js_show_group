@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+  <name>JS Show Group</name>
+  <author>Rodolfo Ungheri</author>
+  <creationDate>May 2015</creationDate>
+  <copyright>Copyright (C) 2015 Rodolfo Ungheri. All rights reserved.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <authorEmail>r.ungheri@katamail.com</authorEmail>
+  <authorUrl>http://tzertu.net</authorUrl>
+  <version>0.1.1</version>
+  <description>Show the group specified in the paramenter field</description>
+
+  <files>
+    <filename module="mod_community_showgroup">mod_community_showgroup.php</filename>
+    <filename>mod_community_showgroup.xml</filename>
+    <folder>tmpl</folder>
+  </files>
+
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="groupid" type="text" default="1" label="Group id" description="Group id" />
+      </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+            </fieldset>
+    </fields>
+  </config>
+</extension>
